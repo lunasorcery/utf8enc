@@ -15,13 +15,13 @@ bool isHexChar(char c) {
 }
 
 bool isValidInput(const char* arg) {
-	if (strlen(arg) < 3)
+	if (strlen(arg) < 3 || strlen(arg) > 8)
 		return false;
 	if (arg[0] != 'u' && arg[0] != 'U')
 		return false;
 	if (arg[1] != '+')
 		return false;
-	for (int i = 2; i < strlen(arg); ++i)
+	for (int i = 2; i < (int)strlen(arg); ++i)
 		if (!isHexChar(arg[i]))
 			return false;
 	return true;
@@ -46,7 +46,7 @@ void printValueAsUTF8(uint32_t value) {
 		buffer[2] = 0x80 | (value & 0x3F);
 		buffer[3] = 0x00;
 	} else if (value <= 0x10FFFF) {
-		buffer[0] = 0xF0 | ((value >> 18) & 0x7);
+		buffer[0] = 0xF0 | ((value >> 18) & 0x07);
 		buffer[1] = 0x80 | ((value >> 12) & 0x3F);
 		buffer[2] = 0x80 | ((value >> 6) & 0x3F);
 		buffer[3] = 0x80 | (value & 0x3F);
@@ -65,7 +65,8 @@ int main(int argc, char** argv) {
 		}
 		uint32_t value = parseInput(argv[i]);
 		if (value > 0x10FFFF) {
-			printf("Codepoint '%s'\n is too large to represent in UTF-8\n", argv[i]);
+			printf("Codepoint '%s' is too large to represent in UTF-8\n", argv[i]);
+			return 1;
 		}
 		printValueAsUTF8(value);
 	}
