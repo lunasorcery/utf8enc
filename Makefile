@@ -8,3 +8,5 @@ install: utf8enc
 
 clean:
 	rm -f utf8enc
+
+.PHONY: all install clean

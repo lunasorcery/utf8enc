@@ -60,7 +60,7 @@ void printValueAsUTF8(uint32_t value) {
 int main(int argc, char** argv) {
 	for (int i = 1; i < argc; ++i) {
 		if (!isValidInput(argv[i])) {
-			printf("Malformed codepoint '%s'\n", argv[i]);
+			printf("Malformed codepoint '%s', expected U+XXXX syntax.\n", argv[i]);
 			return 1;
 		}
 		uint32_t value = parseInput(argv[i]);

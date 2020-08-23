@@ -1,7 +1,17 @@
-utf8enc
-========
-[![Build Status](https://travis-ci.org/willkirkby/utf8enc.svg?branch=master)](https://travis-ci.org/willkirkby/utf8enc)
+# utf8enc
 
-**utf8enc** is a small utility that reads an argument list of unicode codepoints, and prints them out as UTF-8 characters.
+![CircleCI](https://circleci.com/gh/lunasorcery/utf8enc.svg?style=shield)
 
-![](http://kirk.by/s/qudk1yS)
+**utf8enc** is a tiny utility that reads an argument list of unicode codepoints, and outputs them as UTF-8 characters.
+
+![](docs/screenshot.png)
+
+## Building & Installing
+
+On macOS and Linux, it _should_ be as simple as running the following inside the `utf8enc` directory:
+
+```
+make && make install
+```
+
+Windows is not _officially_ supported, but it'll likely work under WSL.
